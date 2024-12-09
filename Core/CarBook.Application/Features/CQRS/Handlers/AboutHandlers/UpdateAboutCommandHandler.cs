@@ -18,7 +18,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.AboutHandlers
 			_repository = repository;
 		}
 
-		public async Task Handel(UpdateAboutCommand command)
+		public async Task Handle(UpdateAboutCommand command)
 		{
 			var values = await _repository.GetByIdAsync(command.AboutId);
 			values.Title = command.Title;
