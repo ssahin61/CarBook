@@ -22,7 +22,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.BrandHandlers
 		{
 			var values = await _repository.GetByIdAsync(command.BrandId);
 
-			command.Name = values.Name;
+			values.Name = command.Name;
 			await _repository.UpdateAsync(values);
 		}
 	}
