@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarBook.WebApi.Controllers
 {
-	[Route("api/[controller]")]
+	[Route("api/[controller]")] // çalışmazsa kullan > [Route("[controller]/[action]")]
 	[ApiController]
 	public class CarsController : ControllerBase
 	{
@@ -15,14 +15,16 @@ namespace CarBook.WebApi.Controllers
 		private readonly CreateCarCommandHandler _createCarCommandHandler;
 		private readonly UpdateCarCommandHandler _updateCarCommandHandler;
 		private readonly RemoveCarCommandHandler _removeCarCommandHandler;
+		private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
 
-		public CarsController(GetCarQueryHandler getCarQueryHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, CreateCarCommandHandler createCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler, RemoveCarCommandHandler removeCarCommandHandler)
+		public CarsController(GetCarQueryHandler getCarQueryHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, CreateCarCommandHandler createCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler, RemoveCarCommandHandler removeCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler)
 		{
 			_getCarQueryHandler = getCarQueryHandler;
 			_getCarByIdQueryHandler = getCarByIdQueryHandler;
 			_createCarCommandHandler = createCarCommandHandler;
 			_updateCarCommandHandler = updateCarCommandHandler;
 			_removeCarCommandHandler = removeCarCommandHandler;
+			_getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
 		}
 
 		[HttpGet]
@@ -58,6 +60,13 @@ namespace CarBook.WebApi.Controllers
 		{
 			await _removeCarCommandHandler.Handle(new RemoveCarCommand(id));
 			return Ok("Araba silindi!");
+		}
+
+		[HttpGet("GetCarWithBrand")]
+		public async Task<IActionResult> GetCarListWithBrand()
+		{
+			var values = await _getCarWithBrandQueryHandler.Handle();
+			return Ok(values);
 		}
 	}
 }
