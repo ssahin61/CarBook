@@ -29,7 +29,6 @@ namespace CarBook.Application.Features.CQRS.Handlers.BrandHandlers
 				BrandId = values.BrandId,
 				Name = values.Name
 			};
-
 		}
 	}
 }

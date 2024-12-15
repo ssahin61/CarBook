@@ -27,6 +27,5 @@ namespace CarBook.Application.Features.CQRS.Handlers.AboutHandlers
 				ImageUrl = command.ImageUrl,
 			});
 		}
-
 	}
 }
