@@ -18,6 +18,10 @@ namespace CarBook.Application.Features.CQRS.Handlers.ContactHandlers
 			var values = await _repository.GetByIdAsync(command.ContactId);
 
 			values.Name = command.Name;
+			values.Email = command.Email;
+			values.Subject = command.Subject;
+			values.Message = command.Message;
+			values.SendDate = command.SendDate;
 			await _repository.UpdateAsync(values);
 		}
 	}

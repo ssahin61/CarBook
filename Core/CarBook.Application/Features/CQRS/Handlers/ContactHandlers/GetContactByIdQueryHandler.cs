@@ -20,7 +20,11 @@ namespace CarBook.Application.Features.CQRS.Handlers.ContactHandlers
 			return new GetContactByIdQueryResult
 			{
 				ContactId = values.ContactId,
-				Name = values.Name
+				Name = values.Name,
+				Email = values.Email,
+				Subject = values.Subject,
+				Message = values.Message,
+				SendDate = values.SendDate,
 			};
 		}
 	}

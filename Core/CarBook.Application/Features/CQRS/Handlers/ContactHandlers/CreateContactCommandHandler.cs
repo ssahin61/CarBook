@@ -17,7 +17,11 @@ namespace CarBook.Application.Features.CQRS.Handlers.ContactHandlers
 		{
 			await _repository.CreateAsync(new Contact
 			{
-				Name = command.Name
+				Name = command.Name,
+			    Email = command.Email,
+				Subject = command.Subject,
+				Message = command.Message,
+				SendDate = command.SendDate,
 			});
 		}
 	}
