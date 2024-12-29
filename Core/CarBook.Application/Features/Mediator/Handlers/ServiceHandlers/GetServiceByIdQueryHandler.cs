@@ -21,6 +21,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.ServiceHandlers
 
 			return new GetServiceByIdQueryResult
 			{
+				ServiceId = values.ServiceId,
 				Title = values.Title,
 				Description = values.Description,
 				IconUrl = values.IconUrl,
