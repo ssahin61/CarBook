@@ -6,7 +6,7 @@ using MediatR;
 
 namespace CarBook.Application.Features.Mediator.Handlers.SocialMediaHandlers
 {
-	public class GetSocialMediaQueryHandler : IRequestHandler<GetSocialMediaQuery, List<GetSocialMediaQueryResult>
+	public class GetSocialMediaQueryHandler : IRequestHandler<GetSocialMediaQuery, List<GetSocialMediaQueryResult>>
 	{
 		private readonly IRepository<SocialMedia> _repository;
 
