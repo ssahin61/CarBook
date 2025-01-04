@@ -6,18 +6,18 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    @await Component.InvokeAsync("_HeadUILayoutComponentPartial") 
+    @await Component.InvokeAsync("HeadUILayoutComponentPartial") 
 </head>
 <body>
 
-    @await Component.InvokeAsync("_NavbarUILayoutComponentPartial")
+    @await Component.InvokeAsync("NavbarUILayoutComponentPartial")
 
-    @await Component.InvokeAsync("_MainCoverUILayoutComponentPartial")
+    @await Component.InvokeAsync("MainCoverUILayoutComponentPartial")
 
    @RenderBody()
 
-    @await Component.InvokeAsync("_FooterCoverUILayoutComponentPartial")
+    @await Component.InvokeAsync("FooterCoverUILayoutComponentPartial")
 
-    @await Component.InvokeAsync("_ScriptCoverUILayoutComponentPartial")
+    @await Component.InvokeAsync("ScriptCoverUILayoutComponentPartial")
 </body>
 </html>
