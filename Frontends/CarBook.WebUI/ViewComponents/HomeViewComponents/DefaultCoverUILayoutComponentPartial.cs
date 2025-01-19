@@ -1,14 +1,14 @@
-﻿using CarBook.DTO.FooterAddressDtos;
+﻿using CarBook.DTO.BannerDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace CarBook.WebUI.ViewComponents.FooterAddressComponents
+namespace CarBook.WebUI.ViewComponents.HomeViewComponents
 {
-	public class FooterAddressComponentPartial : ViewComponent
+	public class DefaultCoverUILayoutComponentPartial : ViewComponent
 	{
 		private readonly IHttpClientFactory _httpClientFactory;
 
-		public FooterAddressComponentPartial(IHttpClientFactory httpClientFactory)
+		public DefaultCoverUILayoutComponentPartial(IHttpClientFactory httpClientFactory)
 		{
 			_httpClientFactory = httpClientFactory;
 		}
@@ -16,12 +16,12 @@ namespace CarBook.WebUI.ViewComponents.FooterAddressComponents
 		public async Task<IViewComponentResult> InvokeAsync()
 		{
 			var client = _httpClientFactory.CreateClient();
-			var responseMessage = await client.GetAsync("https://localhost:44345/api/FooterAddresses");
+			var responseMessage = await client.GetAsync("https://localhost:44345/api/Banners");
 
 			if (responseMessage.IsSuccessStatusCode)
 			{
 				var jsonData = await responseMessage.Content.ReadAsStringAsync();
-				var values = JsonConvert.DeserializeObject<List<ResultFooterAddressDto>>(jsonData);
+				var values = JsonConvert.DeserializeObject<List<ResultBannerDto>>(jsonData);
 				return View(values);
 			}
 
